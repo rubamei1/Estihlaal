@@ -11,7 +11,8 @@ import SwiftUI
 struct EstihlaalApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OnboardingView()
+            
         }
     }
 }
