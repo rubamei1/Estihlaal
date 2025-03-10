@@ -11,6 +11,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		322A58C22D7D8F0B003D552D /* AssessmentVM */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = AssessmentVM;
+			sourceTree = "<group>";
+		};
 		DE351EA92D75BF7100F6D58B /* Estihlaal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Estihlaal;
@@ -34,6 +39,7 @@
 			children = (
 				DE351EA92D75BF7100F6D58B /* Estihlaal */,
 				DE351EA82D75BF7100F6D58B /* Products */,
+				322A58C22D7D8F0B003D552D /* AssessmentVM */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				322A58C22D7D8F0B003D552D /* AssessmentVM */,
 				DE351EA92D75BF7100F6D58B /* Estihlaal */,
 			);
 			name = Estihlaal;

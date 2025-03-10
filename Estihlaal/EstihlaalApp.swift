@@ -9,8 +9,11 @@ import SwiftUI
 
 @main
 struct EstihlaalApp: App {
+    @StateObject var viewModel = AssessmentViewModel()
+    
     var body: some Scene {
         WindowGroup {
+
             OnboardingView()
             
         }
