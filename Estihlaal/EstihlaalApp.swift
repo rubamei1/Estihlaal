@@ -13,7 +13,9 @@ struct EstihlaalApp: App {
     
     var body: some Scene {
         WindowGroup {
-            OverviewPage(viewModel: viewModel)
+
+            OnboardingView()
+            
         }
     }
 }
