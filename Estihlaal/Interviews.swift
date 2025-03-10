@@ -207,24 +207,24 @@ struct Interviews: View {
 }
 
 // ✅ مكون `NavItem` لشريط التنقل
-struct NavItem: View {
-    let icon: String
-    let text: String
-    let isActive: Bool
-
-    var body: some View {
-        VStack {
-            Image(systemName: icon)
-                .font(.title3)
-                .foregroundColor(isActive ? Color("main") : Color("accent"))
-
-            Text(text)
-                .font(.caption)
-                .foregroundColor(isActive ? Color("main") : Color("accent"))
-        }
-        .frame(maxWidth: .infinity)
-    }
-}
+//struct NavItem: View {
+//    let icon: String
+//    let text: String
+//    let isActive: Bool
+//
+//    var body: some View {
+//        VStack {
+//            Image(systemName: icon)
+//                .font(.title3)
+//                .foregroundColor(isActive ? Color("main") : Color("accent"))
+//
+//            Text(text)
+//                .font(.caption)
+//                .foregroundColor(isActive ? Color("main") : Color("accent"))
+//        }
+//        .frame(maxWidth: .infinity)
+//    }
+//}
 
 #Preview {
     Interviews()
