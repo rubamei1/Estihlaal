@@ -11,9 +11,9 @@ struct WelcomeView: View {
     var body: some View {
         VStack {
             Spacer().frame(height: 100)
-            Image("FourthOnboarding")
+            Image("onboarding4")
                 .resizable()
-                .frame(width: 340, height: 340)
+                .frame(width: 340, height: 290)
             
             Text("Great to have you here, Maryam!")
                 .foregroundColor(Color.black)

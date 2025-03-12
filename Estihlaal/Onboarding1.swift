@@ -13,8 +13,8 @@ struct Onboarding1: View {
             Color("MainColor").ignoresSafeArea()
             
             VStack {
-                Spacer().frame(height: 20)
-                Image("Onboarding1")
+                Spacer().frame(height: 40)
+                Image("onboarding1")
                     .resizable()
                     .frame(width: 320, height: 320)
                 Spacer().frame(height: 40)

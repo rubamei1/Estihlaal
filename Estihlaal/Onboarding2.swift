@@ -8,11 +8,11 @@ import SwiftUI
 struct Onboarding2: View {
     var body: some View {
         VStack {
-            Spacer().frame(height: 20)
-            Image("Onboarding2")
+            Spacer().frame(height: 45)
+            Image("onboarding2")
                 .resizable()
-                .frame(width: 320, height: 320)
-            Spacer().frame(height: 40)
+                .frame(width: 330, height: 275)
+            Spacer().frame(height: 80)
             
             Text("Your path... paved for you!")
                 .foregroundColor(.black)

@@ -13,11 +13,11 @@ struct Onboarding3: View {
             Color("MainColor").ignoresSafeArea() 
             
             VStack {
-                Spacer().frame(height: 20)
-                Image("Onboarding3")
+                Spacer().frame(height: 30)
+                Image("onboarding3")
                     .resizable()
-                    .frame(width: 320, height: 320)
-                Spacer().frame(height: 40)
+                    .frame(width: 290, height: 310)
+                Spacer().frame(height: 60)
                 
                 Text("Ace your interviews!")
                     .foregroundColor(.white)
