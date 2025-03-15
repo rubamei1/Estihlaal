@@ -1,8 +1,10 @@
-//
-//  Interviews.swift
-//  Estihlaal
-//
-//  Created by Aliah Alhameed on 10/09/1446 AH.
+//////
+//////  interview.swift
+//////  EstihlaalVV2
+//////
+//////  Created by Reem on 12/09/1446 AH.
+//////
+////
 //
 
 import SwiftUI
@@ -10,12 +12,14 @@ import SwiftUI
 struct Interviews: View {
     @State private var selectedTab = "Take an interview"
     @State private var interviewHistory: [[String: String]] = []
+    var userName: String = "User"
 
-    let positions = ["UI/UX Designer", "Graphic Designer", "Product Designer", "UX Researcher"]
+    let predictedJobs: [String] // ✅ Receive predicted jobs directly
 
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
+                // ✅ Header Styling
                 VStack(alignment: .leading) {
                     HStack {
                         Text("Interviews")
@@ -34,7 +38,7 @@ struct Interviews: View {
 
                 Spacer().frame(height: 20)
 
-                // Tabs
+                // ✅ Tabs for switching between Interview & History
                 HStack {
                     Button(action: { selectedTab = "Take an interview" }) {
                         Text("Take an interview")
@@ -82,7 +86,6 @@ struct Interviews: View {
                                 VStack(spacing: 16) {
                                     ForEach(interviewHistory, id: \.self) { interview in
                                         HStack {
-                                            // ✅ عرض الوظيفة على اليسار
                                             Text(interview["position"] ?? "Unknown Position")
                                                 .font(.system(size: 18))
                                                 .fontWeight(.bold)
@@ -90,7 +93,6 @@ struct Interviews: View {
 
                                             Spacer()
 
-                                            // ✅ عرض التاريخ والوقت بشكل عمودي (التاريخ في الأعلى، الوقت تحته)
                                             VStack(alignment: .trailing) {
                                                 Text(formatDate(dateString: interview["date"] ?? ""))
                                                     .font(.system(size: 14))
@@ -116,23 +118,35 @@ struct Interviews: View {
                             .background(Color.white)
                         }
                     } else {
-                        Text("What position you're interviewing for?")
+                        // ✅ "Take an Interview" Section
+                        Text("What position you’re interviewing for?")
                             .font(.system(size: 18))
                             .fontWeight(.regular)
                             .foregroundColor(.black)
-                            .padding(.top, 50)
+                            .padding(.top, 20)
 
-                        VStack(spacing: 16) {
-                            ForEach(positions, id: \.self) { position in
-                                NavigationLink(destination: ActualInterview(selectedPosition: position)) {
-                                    Text(position)
-                                        .font(.system(size: 18))
-                                        .fontWeight(.bold)
-                                        .frame(width: 375, height: 80)
-                                        .background(Color("main"))
-                                        .foregroundColor(.white)
-                                        .cornerRadius(20)
+                        if predictedJobs.isEmpty {
+                            Text("No jobs available.")
+                                .foregroundColor(.gray)
+                                .padding()
+                        } else {
+                            ScrollView {
+                                VStack(spacing: 16) {
+                                    ForEach(predictedJobs, id: \.self) { position in
+                                        NavigationLink(destination: ActualInterview(selectedPosition: position)) {
+                                            Text(position)
+                                                .font(.system(size: 18))
+                                                .fontWeight(.bold)
+                                                .frame(width: 350, height: 80)
+                                                .background(Color("main"))
+                                                .foregroundColor(.white)
+                                                .cornerRadius(15)
+                                                .shadow(color: Color("main").opacity(0.5), radius: 5, x: 5, y: 5)
+                                        }
+                                    }
                                 }
+                                .padding(.horizontal, 24)
+                                .padding(.top, 10)
                             }
                         }
                     }
@@ -142,21 +156,26 @@ struct Interviews: View {
 
                 Spacer()
 
-                // ✅ شريط التنقل (Navigation Bar)
+                // ✅ Bottom Navigation Bar
                 HStack {
-                    NavItem(icon: "briefcase.fill", text: "Career path", isActive: false)
-                        .padding(.leading)
-                    NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: true)
-                    NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)
-                        .padding(.trailing)
+                    NavigationLink(destination: OverviewPage(viewModel: AssessmentViewModel())) {
+                        NavItem(icon: "briefcase.fill", text: "Career path", isActive: false)
+                            .padding(.leading)
+                    }
+                    NavigationLink(destination: Interviews(predictedJobs: [])) {
+                        NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: true)
+                    }
+                    NavigationLink(destination: ProfileView(userName: userName)) {
+                        NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)
+                    }
                 }
-                .frame(height: 60)
+                .frame(height: 20)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color(UIColor.systemGray6))
-                        //.padding(.top, -10)
-                        .padding(.bottom, -100)
+                        .padding(.bottom, -100).padding(.top, -30)
                 )
+                .padding(.bottom, 40)
             }
             .padding(.top)
             .background(Color.white)
@@ -164,9 +183,11 @@ struct Interviews: View {
                 loadInterviews()
             }
         }
+        .navigationBarBackButtonHidden(true)
+
     }
 
-    // ✅ تحميل البيانات مع إزالة التكرارات
+    // ✅ Load interview history
     func loadInterviews() {
         var history = UserDefaults.standard.array(forKey: "interviewHistory") as? [[String: String]] ?? []
         history = removeDuplicates(from: history)
@@ -174,7 +195,7 @@ struct Interviews: View {
         UserDefaults.standard.set(history, forKey: "interviewHistory")
     }
 
-    // ✅ إزالة المقابلات المكررة بناءً على الوظيفة + التاريخ + الوقت
+    // ✅ Remove duplicates
     func removeDuplicates(from history: [[String: String]]) -> [[String: String]] {
         var uniqueInterviews: [[String: String]] = []
         for interview in history {
@@ -185,7 +206,7 @@ struct Interviews: View {
         return uniqueInterviews
     }
 
-    // ✅ دالة لتنسيق التاريخ ليظهر بصيغة "Monday 17 February"
+    // ✅ Format date function
     func formatDate(dateString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -195,7 +216,7 @@ struct Interviews: View {
         return formatter.string(from: date)
     }
 
-    // ✅ دالة لتنسيق الوقت ليظهر بشكل صحيح أسفل التاريخ
+    // ✅ Format time function
     func formatTime(dateString: String) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy/MM/dd HH:mm"
@@ -206,26 +227,26 @@ struct Interviews: View {
     }
 }
 
-// ✅ مكون `NavItem` لشريط التنقل
-//struct NavItem: View {
-//    let icon: String
-//    let text: String
-//    let isActive: Bool
-//
-//    var body: some View {
-//        VStack {
-//            Image(systemName: icon)
-//                .font(.title3)
-//                .foregroundColor(isActive ? Color("main") : Color("accent"))
-//
-//            Text(text)
-//                .font(.caption)
-//                .foregroundColor(isActive ? Color("main") : Color("accent"))
-//        }
-//        .frame(maxWidth: .infinity)
-//    }
-//}
+// ✅ Navigation Bar Item Component
+struct NavItemm: View {
+    let icon: String
+    let text: String
+    let isActive: Bool
+
+    var body: some View {
+        VStack {
+            Image(systemName: icon)
+                .font(.title3)
+                .foregroundColor(isActive ? Color("main") : Color("accent"))
+
+            Text(text)
+                .font(.caption)
+                .foregroundColor(isActive ? Color("main") : Color("accent"))
+        }
+        .frame(maxWidth: .infinity)
+    }
+}
 
 #Preview {
-    Interviews()
+    Interviews(predictedJobs: ["UI/UX Designer", "Graphic Designer", "Product Designer", "UX Researcher"])
 }

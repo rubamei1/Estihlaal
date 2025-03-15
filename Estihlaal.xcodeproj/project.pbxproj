@@ -10,14 +10,22 @@
 		DE351EA72D75BF7100F6D58B /* Estihlaal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Estihlaal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		322A58C22D7D8F0B003D552D /* AssessmentVM */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AssessmentVM;
-			sourceTree = "<group>";
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		32832ADF2D84D48F0077C2A6 /* Exceptions for "Estihlaal" folder in "Estihlaal" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = DE351EA62D75BF7100F6D58B /* Estihlaal */;
 		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
 		DE351EA92D75BF7100F6D58B /* Estihlaal */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				32832ADF2D84D48F0077C2A6 /* Exceptions for "Estihlaal" folder in "Estihlaal" target */,
+			);
 			path = Estihlaal;
 			sourceTree = "<group>";
 		};
@@ -39,7 +47,6 @@
 			children = (
 				DE351EA92D75BF7100F6D58B /* Estihlaal */,
 				DE351EA82D75BF7100F6D58B /* Products */,
-				322A58C22D7D8F0B003D552D /* AssessmentVM */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,7 +74,6 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				322A58C22D7D8F0B003D552D /* AssessmentVM */,
 				DE351EA92D75BF7100F6D58B /* Estihlaal */,
 			);
 			name = Estihlaal;
@@ -259,9 +265,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Estihlaal/Preview Content\"";
-				DEVELOPMENT_TEAM = 2V5V9Z8DAD;
+				DEVELOPMENT_TEAM = WVVL9YZMLF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Estihlaal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -288,9 +295,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Estihlaal/Preview Content\"";
-				DEVELOPMENT_TEAM = 2V5V9Z8DAD;
+				DEVELOPMENT_TEAM = WVVL9YZMLF;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Estihlaal/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

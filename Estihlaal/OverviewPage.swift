@@ -5,11 +5,13 @@
 //  Created by Maryam Amer Bin Siddique on 05/09/1446 AH.
 //
 
+import SwiftUICore
 import SwiftUI
 
 struct OverviewPage: View {
     @ObservedObject var viewModel: AssessmentViewModel
-
+    var userName: String = "User"
+    
     var body: some View {
         NavigationStack{
             VStack(spacing: 20) {
@@ -21,7 +23,7 @@ struct OverviewPage: View {
                         .foregroundColor(.gray)
                     
                     HStack {
-                        Text("Username")
+                        Text(userName)
                             .font(.title)
                             .fontWeight(.black)
                             .foregroundColor(.black)
@@ -29,13 +31,15 @@ struct OverviewPage: View {
                         Text("👋")
                             .font(.title)
                     }
+                    .padding(.bottom, -20)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding()
+                .frame(height: 110)
+                .padding(.horizontal, 30)
+                .padding(.top, 30)
                 .background(
                     RoundedRectangle(cornerRadius: 30)
-                        .fill(Color(UIColor.systemGray6))
-                        .padding(.top, -100)
+                        .fill(Color(UIColor.systemGray6)).padding(.top, -30)
                 )
                 
                 Text("Discover your Career path!")
@@ -104,8 +108,12 @@ struct OverviewPage: View {
                 HStack {
                     NavItem(icon: "briefcase.fill", text: "Career path", isActive: true)
                         .padding(.leading)
-                    NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
-                    NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)      .padding(.trailing)
+                    NavigationLink(destination: Interviews(predictedJobs: [])) { // ✅ Linked to Interviews page
+                        NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
+                    }
+                    NavigationLink(destination: ProfileView(userName: userName)) {
+                        NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)
+                    }
                 }
                 .frame(height: 20)
                 .background(
@@ -113,6 +121,7 @@ struct OverviewPage: View {
                         .fill(Color(UIColor.systemGray6))
                         .padding(.bottom, -100).padding(.top, -30)
                 )
+                .padding(.bottom, 40)
             }
             .padding(.top)
             .navigationBarBackButtonHidden(true)

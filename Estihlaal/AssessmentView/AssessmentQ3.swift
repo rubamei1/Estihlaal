@@ -15,19 +15,19 @@ struct AssessmentQ3: View {
     @State private var navigateToOverview = false
     
     var body: some View {
-        NavigationStack {
             VStack {
                 progressBar
                 questionText
                 interestsList
                 Spacer()
                 continueButton
-                navigationBar
+//                navigationBar
                 
                 NavigationLink(destination: OverviewPage(viewModel: viewModel), isActive: $navigateToOverview) {
                     EmptyView()
                 }
             }
+            .padding(.bottom, 30)
             .padding(.top)
             .navigationBarBackButtonHidden(true)
             .navigationTitle("Personal")
@@ -40,7 +40,6 @@ struct AssessmentQ3: View {
                     closeButton
                 }
             }
-        }
     }
     
     
@@ -86,22 +85,23 @@ struct AssessmentQ3: View {
         .disabled(viewModel.selectedInterests.isEmpty)
     }
     
-    // Navigation Bar
-    private var navigationBar: some View {
-        HStack {
-            NavItem(icon: "briefcase.fill", text: "Career path", isActive: true)
-                .padding(.leading)
-            NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
-            NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)
-                .padding(.trailing)
-        }
-        .frame(height: 20)
-        .background(
-            RoundedRectangle(cornerRadius: 30)
-                .fill(Color(UIColor.systemGray6))
-                .padding(.bottom, -100).padding(.top, -30)
-        )
-    }
+//    // Navigation Bar
+//    private var navigationBar: some View {
+//        HStack {
+//            NavItem(icon: "briefcase.fill", text: "Career path", isActive: true)
+//                .padding(.leading)
+//            NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
+//            NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)
+//                .padding(.trailing)
+//        }
+//        .padding(.bottom, 30)
+//        .frame(height: 20)
+//        .background(
+//            RoundedRectangle(cornerRadius: 30)
+//                .fill(Color(UIColor.systemGray6))
+//                .padding(.bottom, -100).padding(.top, -40)
+//        )
+//    }
     
     // Back Button
     private var backButton: some View {

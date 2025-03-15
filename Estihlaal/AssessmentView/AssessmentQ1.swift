@@ -58,42 +58,44 @@ struct AssessmentQ1: View {
                 .padding(.bottom, 50)
                 .disabled(viewModel.selectedField == nil)
 
-                // Navigation Bar
-                HStack {
-                    NavItem(icon: "briefcase.fill", text: "Career path", isActive: true)
-                        .padding(.leading)
-                    NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
-                    NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)      .padding(.trailing)
-                }
-                .frame(height: 20)
-                .background(
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(Color(UIColor.systemGray6))
-                        .padding(.bottom, -100).padding(.top, -30)
-                )
+//                // Navigation Bar
+//                HStack {
+//                    NavItem(icon: "briefcase.fill", text: "Career path", isActive: true)
+//                        .padding(.leading)
+//                    NavItem(icon: "person.2.wave.2.fill", text: "Interviews", isActive: false)
+//                    NavItem(icon: "square.grid.2x2.fill", text: "More", isActive: false)      .padding(.trailing)
+//                }
+//                .padding(.bottom, 30)
+//                .frame(height: 20)
+//                .background(
+//                    RoundedRectangle(cornerRadius: 30)
+//                        .fill(Color(UIColor.systemGray6))
+//                        .padding(.bottom, -100).padding(.top, -40)
+//                )
             }
+            .padding(.bottom, 30)
             .padding(.top)
-            .navigationTitle("Background")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarBackButtonHidden(true)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .foregroundColor(Color("accent"))
-                    }
+        }
+        .navigationTitle("Background")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundColor(Color("accent"))
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Image(systemName: "xmark")
-                            .foregroundColor(Color("accent"))
-                    }
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "xmark")
+                        .foregroundColor(Color("accent"))
                 }
             }
         }
@@ -122,8 +124,8 @@ struct RadioButton: View {
                 Spacer()
             }
             .padding()
-            .frame(maxWidth: .infinity)
-            .frame(height: 70)
+//            .frame(maxWidth: .infinity)
+            .frame(width: 340 , height: 70)
             .background(Color("secon"))
             .cornerRadius(30)
         }
