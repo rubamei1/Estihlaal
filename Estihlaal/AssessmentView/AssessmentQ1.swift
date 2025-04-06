@@ -73,8 +73,8 @@ struct AssessmentQ1: View {
 //                        .padding(.bottom, -100).padding(.top, -40)
 //                )
             }
-            .padding(.bottom, 30)
-            .padding(.top)
+//            .padding(.bottom, 30)
+//            .padding(.top)
         }
         .navigationTitle("Background")
         .navigationBarTitleDisplayMode(.inline)
@@ -99,7 +99,6 @@ struct AssessmentQ1: View {
                 }
             }
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

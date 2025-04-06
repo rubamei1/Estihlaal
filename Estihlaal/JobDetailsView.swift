@@ -95,6 +95,7 @@ struct JobDetailsView: View {
                     .padding(.bottom, -100)
             )
         }
+        .padding(.top, 30)
         .onAppear {
             viewModel.fetchJobDetails(jobTitle: jobTitle)
         }
